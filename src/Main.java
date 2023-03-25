@@ -35,7 +35,7 @@ public class Main
         System.out.println("Libro con nuevos atributos: ");
         ///imprimiendo el autor desde el libro.
         librito.mostrarLibro();
-        ///g
+        ///g falta hacer g
         librito.mostrarAlgunosAtributos();
 
     }
