@@ -53,10 +53,10 @@ public class Autor
     }
     public Autor (String nombre, String apellido, String email, char genero)
     {
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.email = email;
-        this.genero = genero;
+        setApellido(apellido);
+        setNombre(nombre);
+        setEmail(email);
+        setGenero(genero);
     }
     ///Metodos
     public void mostrarAutor  ()
