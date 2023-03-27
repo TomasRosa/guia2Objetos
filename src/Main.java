@@ -1,5 +1,4 @@
 
-import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
 import java.time.LocalDate;
@@ -73,6 +72,23 @@ public class Main
         System.out.println("Monto total de la factura con 15% de descuento: " + facturita.montoTotalConDescuento(clientecito.getDescuento()));
         ///d
         facturita.mostrarFactura(facturita.montoTotalConDescuento(clientecito.getDescuento()));
-        ///FALTA HACER EL Ee
+        ///e
+        UUID idItem1 = UUID.randomUUID();
+        UUID idItem2 = UUID.randomUUID();
+        UUID idItem3 = UUID.randomUUID();
+        ///Una factura con varios items, en un arrayList
+        Factura factura1 = new Factura();
+        ItemVenta nuevoItem = new ItemVenta(idItem1,"Tomas Rosa","Jabon",1500);
+        ItemVenta nuevoItem2 = new ItemVenta(idItem2,"Jorge Lopez","Carbon",2000);
+        ItemVenta nuevoItem3 = new ItemVenta(idItem3,"Carla Bobina","Detergente",1000);
+
+        factura1.agregarItemVenta(nuevoItem);
+        factura1.agregarItemVenta(nuevoItem2);
+        factura1.agregarItemVenta(nuevoItem3);
+
+        factura1.mostrarArregloItems();
+
+        ///factura1.getItem(1).mostrarItem();
+
     }
 }

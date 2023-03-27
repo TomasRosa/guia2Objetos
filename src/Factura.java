@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Factura
@@ -7,6 +8,23 @@ public class Factura
     private double monto;
     private LocalDate fecha;
     private Cliente clientecito;
+    private ArrayList <ItemVenta> coleccionDeProductos;
+    /*
+    public ArrayList<ItemVenta> getProducto()
+    {
+        return coleccionDeProductos;
+    }
+
+     */
+    ///Mi coleccion de productos no usa getter porque devolveria todo de golpe.
+    public ItemVenta getItem(int index) ///No la uso pero es para mostrar un item solo.
+    {
+        return coleccionDeProductos.get(index);
+    }
+    public void setProducto(ArrayList<ItemVenta> coleccionDeProductos)
+    {
+        this.coleccionDeProductos = coleccionDeProductos;
+    }
 
     public UUID getId()
     {
@@ -49,14 +67,16 @@ public class Factura
     }
     public Factura ()
     {
-
+        this.coleccionDeProductos= new ArrayList<>();
     }
-    public Factura(UUID id, double monto, LocalDate fecha,Cliente clientecito)
+    public Factura (UUID id, double monto, LocalDate fecha, Cliente cliente)
     {
-        setFecha(fecha);
-        setId(id);
-        setMonto(monto);
-        setClientecito(clientecito);
+       setId(id);
+       setMonto(monto);
+       setFecha(fecha);
+       setClientecito(cliente);
+       ///Debo hacer un constructor vacio que inicialize el arraylist como abajo, solo eso necesita el constructor vacio.
+       setProducto(new ArrayList<>());///Inicializo el arreglo
     }
     public void montoTotal ()
     {
@@ -77,5 +97,16 @@ public class Factura
         System.out.println("Monto con descuento: " + montoConDescuento);
         System.out.println("CLIENTE:");
         getClientecito().mostrarCliente();
+    }
+    public void mostrarArregloItems ()
+    {
+        for (ItemVenta producto: coleccionDeProductos)
+        {
+            producto.mostrarItem();
+        }
+    }
+    public void agregarItemVenta(ItemVenta producto)
+    {
+        this.coleccionDeProductos.add(producto);
     }
 }
