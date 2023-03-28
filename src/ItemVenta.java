@@ -57,6 +57,10 @@ public class ItemVenta
         setDescripcion(descripcion);
         setPrecioUnitario(precioUnitario);
     }
+    public void montoTotal ()
+    {
+        System.out.println("El monto total del item sin descuento es: " + getPrecioUnitario());
+    }
     public double calcularMontoConDescuentoItem (double porcentaje)
     {
         double descuento = getPrecioUnitario() * (porcentaje/100);

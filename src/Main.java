@@ -24,6 +24,11 @@ public class Main
                 ejercicio2();
                 break;
             }
+            case 3:
+            {
+                ejercicio3();
+                break;
+            }
         }
     }
     public static void ejercicio1()
@@ -88,7 +93,38 @@ public class Main
 
         factura1.mostrarArregloItems();
 
-        ///factura1.getItem(1).mostrarItem();
+        nuevoItem.montoTotal();
+        double nuevoItemDesc = nuevoItem.calcularMontoConDescuentoItem(15);
+        System.out.println("El monto total del item con 15% de descuento es: " + nuevoItemDesc + " " + nuevoItem.getNombre());
 
+        nuevoItem2.montoTotal();
+        double nuevoItemDesc2 = nuevoItem2.calcularMontoConDescuentoItem(15);
+        System.out.println("El monto total del item con 15% de descuento es: " + nuevoItemDesc2 + " " + nuevoItem2.getNombre());
+
+        nuevoItem3.montoTotal();
+        double nuevoItemDesc3 = nuevoItem3.calcularMontoConDescuentoItem(15);
+        System.out.println("El monto total del item con 15% de descuento es: " + nuevoItemDesc3 + " " + nuevoItem3.getNombre());
+    }
+    public static void ejercicio3()
+    {
+        ///a
+        Scanner scan = new Scanner(System.in);
+        UUID idCliente = UUID.randomUUID();
+        ClienteBanco cliente = new ClienteBanco(idCliente,"Tomas Rosa",'M');
+        cliente.mostrarClienteBanco();
+        ///b
+        UUID idCuentaCliente = UUID.randomUUID();
+        Cuenta cuentaCliente = new Cuenta(idCuentaCliente,10000,cliente);
+        System.out.println("Saldo actual: " + cuentaCliente.getBalance());
+        System.out.println("Cuanto dinero deseas depositar en la cuenta? \n");
+        double deposito = scan.nextDouble();
+        cuentaCliente.deposito(deposito);
+        System.out.println("El dinero de tu cuenta con el deposito es de: " + cuentaCliente.getBalance());
+        ///c y d
+        System.out.println("Cuanto dinero deseas retirar de tu cuenta? \n");
+        double extraccion = scan.nextDouble();
+        cuentaCliente.extraccion(extraccion);
+        System.out.println("El dinero de tu cuenta con la extraccion es de: " + cuentaCliente.getBalance());
+        ///Declarar arreglos, inicializar arreglos en constructores
     }
 }

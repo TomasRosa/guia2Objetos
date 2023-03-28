@@ -16,8 +16,8 @@ public class Factura
     }
 
      */
-    ///Mi coleccion de productos no usa getter porque devolveria todo de golpe.
-    public ItemVenta getItem(int index) ///No la uso pero es para mostrar un item solo.
+    ///Mi coleccion de productos(ArrayList) no usa getter porque devolveria todo de golpe.
+    public ItemVenta getItem(int index) ///No la uso pero es para mostrar un item solo (Me mostraria el item que este en el index enviado por parametro (posicion del arreglo)).
     {
         return coleccionDeProductos.get(index);
     }
