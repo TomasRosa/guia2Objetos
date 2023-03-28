@@ -155,10 +155,13 @@ public class Main
                         System.out.println("Ingrese el dinero a depositar. Usted es el cliente: " + cuentaCliente.getCliente().getNombre());
                         double deposito = scan.nextDouble();
                         cuentaCliente.deposito(deposito);
+                        System.out.println("Su nuevo balance es de :" + cuentaCliente.getBalance());
 
                         System.out.println("Ingrese el dinero a depositar. Usted es el cliente: " + cuentaCliente2.getCliente().getNombre());
                         double deposito2 = scan.nextDouble();
                         cuentaCliente2.deposito(deposito2);
+                        System.out.println("Su nuevo balance es de :" + cuentaCliente2.getBalance());
+
                         break;
 
                     case 2:
@@ -166,19 +169,32 @@ public class Main
                         System.out.println("Ingrese el dinero a extraer. Usted es el cliente: " + cuentaCliente.getCliente().getNombre());
                         double extraccion = scan.nextDouble();
                         cuentaCliente.extraccion(extraccion);
+                        System.out.println("Su nuevo balance es de: " + cuentaCliente.getBalance());
+
                         System.out.println("Ingrese el dinero a extraer. Usted es el cliente: " + cuentaCliente2.getCliente().getNombre());
                         double extraccion2 = scan.nextDouble();
                         cuentaCliente2.extraccion(extraccion2);
+                        System.out.println("Su nuevo balance es de: " + cuentaCliente2.getBalance());
 
 
                         break;
                 }
                 System.out.println("Desea seguir realizando operaciones? s/n");
                 variableControl = scan.next().charAt(0);
+                if(variableControl == 's')
+                {
+                    System.out.println("Si desea depositar dinero de su cuenta pulse (1).");
+                    System.out.println("Si desea extraer dinero de su cuenta pulse (2). ");
+                    opcion = scan.nextInt();
+                }
             }while(variableControl == 's');
 
-            System.out.println("MUESTRO ARREGLO: ");
+            System.out.println("Arreglo de: " + cliente.getNombre());
             cuentaCliente.mostrarRegistro();
+            System.out.println("Balance total de su cuenta: " + cuentaCliente.getBalance());
+            System.out.println("Arreglo de: " + cliente2.getNombre());
             cuentaCliente2.mostrarRegistro();
+            System.out.println("Balance total de su cuenta: " + cuentaCliente2.getBalance());
+
     }
 }

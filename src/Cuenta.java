@@ -91,12 +91,10 @@ public class Cuenta
                 if (historial.getTipoRegistro() == 1)
                 {
                     System.out.println(cliente.getNombre() + "," + "Deposito: " + historial.getMonto());
-                    System.out.println("Su nuevo balance es de: " + this.getBalance());
 
                 } else if (historial.getTipoRegistro() == 0)
                 {
                     System.out.println(cliente.getNombre() + "," + "Extraccion: " + historial.getMonto());
-                    System.out.println("Su nuevo balance es de: " + this.getBalance());
 
                 }
             }
