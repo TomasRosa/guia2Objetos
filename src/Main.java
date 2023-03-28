@@ -109,6 +109,7 @@ public class Main
     {
         ///a
         Scanner scan = new Scanner(System.in);
+        /*
         UUID idCliente = UUID.randomUUID();
         ClienteBanco cliente = new ClienteBanco(idCliente,"Tomas Rosa",'M');
         cliente.mostrarClienteBanco();
@@ -125,6 +126,59 @@ public class Main
         double extraccion = scan.nextDouble();
         cuentaCliente.extraccion(extraccion);
         System.out.println("El dinero de tu cuenta con la extraccion es de: " + cuentaCliente.getBalance());
-        ///Declarar arreglos, inicializar arreglos en constructores
+         */
+        ///e
+        System.out.println("Si desea depositar dinero de su cuenta pulse (1).");
+        System.out.println("Si desea extraer dinero de su cuenta pulse (2). ");
+        int opcion = scan.nextInt();
+
+
+        UUID idCliente =  UUID.randomUUID();
+        UUID idClienteCuenta = UUID.randomUUID();
+
+        ClienteBanco cliente = new ClienteBanco(idCliente,"Tomas Rosa",'M');
+        Cuenta cuentaCliente = new Cuenta(idClienteCuenta,10000,cliente);
+
+        UUID idCliente2 = UUID.randomUUID();
+        UUID idClienteCuenta2 = UUID.randomUUID();
+
+        ClienteBanco cliente2 = new ClienteBanco(idCliente2,"Tomasa Rosa",'F');
+        Cuenta cuentaCliente2 = new Cuenta(idClienteCuenta2,10000,cliente2);
+
+        char variableControl = 's';
+            do
+            {
+                switch (opcion)
+                {
+                    case 1:
+
+                        System.out.println("Ingrese el dinero a depositar. Usted es el cliente: " + cuentaCliente.getCliente().getNombre());
+                        double deposito = scan.nextDouble();
+                        cuentaCliente.deposito(deposito);
+
+                        System.out.println("Ingrese el dinero a depositar. Usted es el cliente: " + cuentaCliente2.getCliente().getNombre());
+                        double deposito2 = scan.nextDouble();
+                        cuentaCliente2.deposito(deposito2);
+                        break;
+
+                    case 2:
+
+                        System.out.println("Ingrese el dinero a extraer. Usted es el cliente: " + cuentaCliente.getCliente().getNombre());
+                        double extraccion = scan.nextDouble();
+                        cuentaCliente.extraccion(extraccion);
+                        System.out.println("Ingrese el dinero a extraer. Usted es el cliente: " + cuentaCliente2.getCliente().getNombre());
+                        double extraccion2 = scan.nextDouble();
+                        cuentaCliente2.extraccion(extraccion2);
+
+
+                        break;
+                }
+                System.out.println("Desea seguir realizando operaciones? s/n");
+                variableControl = scan.next().charAt(0);
+            }while(variableControl == 's');
+
+            System.out.println("MUESTRO ARREGLO: ");
+            cuentaCliente.mostrarRegistro();
+            cuentaCliente2.mostrarRegistro();
     }
 }

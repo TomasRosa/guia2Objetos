@@ -5,27 +5,21 @@ public class Cuenta
     private UUID id;
     private double balance;
     private ClienteBanco cliente;
-    private Registros[] depositos;
-    private int validosDepositos;
-    private Registros[] extracciones;
-    private int validosExtracciones;
+    private Registro[] registros;
+    private int validosRegistros;
 
     public Cuenta ()
     {
-        this.depositos = new Registros[10];
-        this.validosDepositos = 0;
-        this.extracciones = new Registros[10];
-        this.validosExtracciones = 0;
+        this.registros = new Registro[10];
+        this.validosRegistros = 0;
     }
     public Cuenta (UUID id, double balance, ClienteBanco cliente)
     {
         this.id = id;
         this.balance = balance;
         this.cliente = cliente;
-        this.depositos = new Registros[10];
-        this.validosDepositos = 0;
-        this.extracciones = new Registros[10];
-        this.validosExtracciones = 0;
+        this.registros = new Registro[10];
+        this.validosRegistros = 0;
     }
 
     public UUID getId()
@@ -59,17 +53,56 @@ public class Cuenta
     }
     public void deposito (double dineroADepositar)
     {
-        setBalance(getBalance()+dineroADepositar);
+        Registro nuevo = new Registro(dineroADepositar,1,this.cliente.getNombre());///Creo un registro con los datos.
+        this.registros[validosRegistros] = nuevo; ///Ingreso el registro creado en la posicion valida.
+        this.validosRegistros++; ///Aumento la posicion valida.
+        this.setBalance(this.balance + dineroADepositar);
     }
     public void extraccion (double dineroAExtraer)
     {
-        if((getBalance()-dineroAExtraer) < -2000)
+        if((this.balance-dineroAExtraer) < -2000)
         {
             System.out.println("Solo se puede tener $2000 de balance negativo.");
         }
         else
         {
-            setBalance(getBalance()-dineroAExtraer);
+            this.balance = this.balance - dineroAExtraer;
+
+            Registro nuevo = new Registro (dineroAExtraer,0,this.cliente.getNombre());
+            this.registros[validosRegistros] = nuevo;
+            this.validosRegistros++;
         }
     }
+    /*
+    public void mostrarArrayRegistros ()
+    {
+        for (int i = 0; i < validosRegistros; i++)
+        {
+            registros[i].mostrarRegistro();
+        }
+    }
+     */
+    public void mostrarRegistro ()
+    {
+        for(Registro historial: registros)
+        {
+            if (historial != null)
+            {
+                if (historial.getTipoRegistro() == 1)
+                {
+                    System.out.println(cliente.getNombre() + "," + "Deposito: " + historial.getMonto());
+                    System.out.println("Su nuevo balance es de: " + this.getBalance());
+
+                } else if (historial.getTipoRegistro() == 0)
+                {
+                    System.out.println(cliente.getNombre() + "," + "Extraccion: " + historial.getMonto());
+                    System.out.println("Su nuevo balance es de: " + this.getBalance());
+
+                }
+            }
+        }
+
+    }
+
+
 }
